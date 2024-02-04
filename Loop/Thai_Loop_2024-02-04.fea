@@ -1,8 +1,4 @@
-lookup ccmp_latn_1 {
-	sub fi by f i;
-	sub fl by f l;
-} ccmp_latn_1;
-
+#Update: 2024-02-04
 @TH_narrow_con = [poPla-thai foFa-thai foFan-thai];
 ##with Yamakkan-thai
 @TH_top_vowel-tonemark = [nikhahit-thai maiChattawa-thai maiEk-thai maiHanaKat-thai thanthakhat-thai maiTho-thai maiTri-thai maitaikhu-thai yamakkan-thai saraI-thai saraIi-thai saraUe-thai saraUee-thai];
@@ -49,13 +45,9 @@ lookup ccmp_thai_contextual_sub {
 	sub loChula-thai' @TH_bottom_tonemark @TH_top_vowel-tonemark by loChula-thai.short;
 	##Baseline SaraAi set
 	sub [maiTho-thai maiTri-thai maiChattawa-thai thanthakhat-thai]' @TH_saraAi_set by [maiTho-thai.left maiTri-thai.left maiChattawa-thai.left thanthakhat-thai.left];
-	##Sub Narrow tone-mark set
 } ccmp_thai_contextual_sub;
 
 lookup ccmp_thai_narrow { 
 	lookupflag UseMarkFilteringSet @TH_non_narrow_marks;
 	sub @TH_narrow_con @TH_non_narrow_marks' by [@TH_narrow_marks];
 } ccmp_thai_narrow;
-
-script latn;
-lookup ccmp_latn_1;
