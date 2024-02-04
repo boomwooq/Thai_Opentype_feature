@@ -1,4 +1,5 @@
-# Thai_Feature_Loop on GlyphsApp Feature: CCMP
-This is my current Thai Loop feature file : with .left tonemark additional glyph for no crashing with ใ ไ โ set 
+GlyphsApp Feature: CCMP
 
+Loop: 
 Update 2024-02-04
+My current Thai Loop feature file has the additional glyph.left tone-mark to prevent tone-mark crash with ใ ไ โ set 
