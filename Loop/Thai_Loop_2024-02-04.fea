@@ -1,7 +1,7 @@
-#Update: 2024-02-04
+#Update: 2024-07-22
 @TH_narrow_con = [poPla-thai foFa-thai foFan-thai];
 ##with Yamakkan-thai
-@TH_top_vowel-tonemark = [nikhahit-thai maiChattawa-thai maiEk-thai maiHanaKat-thai thanthakhat-thai maiTho-thai maiTri-thai maitaikhu-thai yamakkan-thai saraI-thai saraIi-thai saraUe-thai saraUee-thai];
+@TH_top_vowel_n_tonemark = [nikhahit-thai maiChattawa-thai maiEk-thai maiHanaKat-thai thanthakhat-thai maiTho-thai maiTri-thai maitaikhu-thai yamakkan-thai saraI-thai saraIi-thai saraUe-thai saraUee-thai];
 ##Without Yamakkan-thai
 @TH_non_narrow_marks = [nikhahit-thai maiChattawa-thai maiEk-thai maiHanaKat-thai thanthakhat-thai maiTho-thai maiTri-thai maitaikhu-thai saraI-thai saraIi-thai saraUe-thai saraUee-thai];
 @TH_narrow_marks = [nikhahit-thai.narrow maiChattawa-thai.narrow maiEk-thai.narrow maiHanaKat-thai.narrow thanthakhat-thai.narrow maiTho-thai.narrow maiTri-thai.narrow  maitaikhu-thai.narrow saraI-thai.narrow saraIi-thai.narrow saraUe-thai.narrow saraUee-thai.narrow];
@@ -18,10 +18,10 @@ lookup ccmp_saraAm-thai {
 
 # GSUB Lookup Type 4 – ligature substitution
 lookup ccmp_thai_nikhahit_normal {
-	sub nikhahit-thai maiEk-thai by nikhahit_maiEk-thai;
-	sub nikhahit-thai maiTho-thai by nikhahit_maiTho-thai;
-	sub nikhahit-thai maiTri-thai by nikhahit_maiTri-thai;
-	sub nikhahit-thai maiChattawa-thai by nikhahit_maiChattawa-thai;
+	sub maiEk-thai nikhahit-thai by nikhahit_maiEk-thai;
+	sub maiTho-thai nikhahit-thai by nikhahit_maiTho-thai;
+	sub maiTri-thai nikhahit-thai by nikhahit_maiTri-thai;
+	sub maiChattawa-thai nikhahit-thai by nikhahit_maiChattawa-thai;
 } ccmp_thai_nikhahit_normal;
 
 lookup ccmp_thai_nikhahit_narrow {
@@ -38,11 +38,11 @@ lookup ccmp_thai_contextual_sub {
 	sub [doChada-thai toPatak-thai]' @TH_bottom_tonemark by [doChada-thai.short toPatak-thai.short];
 	sub [doChada-thai.short toPatak-thai.short] @TH_bottom_tonemark' by @TH_bottom_tonemark_small;
 	#Sub Tone-mark
-	sub @TH_top_vowel-tonemark @TH_top_tonemark' by @TH_top_tonemark_small;
+	sub @TH_top_vowel_n_tonemark @TH_top_tonemark' by @TH_top_tonemark_small;
 	##loChula
-	sub loChula-thai' @TH_top_vowel-tonemark by loChula-thai.short;
-	sub loChula-thai' @TH_top_vowel-tonemark @TH_bottom_tonemark by loChula-thai.short;
-	sub loChula-thai' @TH_bottom_tonemark @TH_top_vowel-tonemark by loChula-thai.short;
+	sub loChula-thai' @TH_top_vowel_n_tonemark by loChula-thai.short;
+	sub loChula-thai' @TH_top_vowel_n_tonemark @TH_bottom_tonemark by loChula-thai.short;
+	sub loChula-thai' @TH_bottom_tonemark @TH_top_vowel_n_tonemark by loChula-thai.short;
 	##Baseline SaraAi set
 	sub [maiTho-thai maiTri-thai maiChattawa-thai thanthakhat-thai]' @TH_saraAi_set by [maiTho-thai.left maiTri-thai.left maiChattawa-thai.left thanthakhat-thai.left];
 } ccmp_thai_contextual_sub;
