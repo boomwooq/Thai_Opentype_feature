@@ -1,10 +1,10 @@
 GlyphsApp Feature: CCMP
 -----
 Update made in 2024-07-22
-# GSUB Lookup Type 4 – ligature substitution
 Swaped position started with set of tone-mark first then `nikhahit-thai`
 This way, it will work on both Desktop and also Canva 
 ```
+# GSUB Lookup Type 4 – ligature substitution
 lookup ccmp_thai_nikhahit_normal {
 	sub maiEk-thai nikhahit-thai by nikhahit_maiEk-thai;
 	sub maiTho-thai nikhahit-thai by nikhahit_maiTho-thai;
