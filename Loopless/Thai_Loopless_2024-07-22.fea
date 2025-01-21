@@ -26,6 +26,10 @@ lookup ccmp_saraAm-thai {
 
 # GSUB Lookup Type 4 – ligature substitution
 lookup ccmp_thai_nikhahit_normal {
+	sub nikhahit-thai maiEk-thai by nikhahit_maiEk-thai;
+	sub nikhahit-thai maiTho-thai by nikhahit_maiTho-thai;
+	sub nikhahit-thai maiTri-thai by nikhahit_maiTri-thai;
+	sub nikhahit-thai maiChattawa-thai by nikhahit_maiChattawa-thai;
 	sub maiEk-thai nikhahit-thai by nikhahit_maiEk-thai;
 	sub maiTho-thai nikhahit-thai by nikhahit_maiTho-thai;
 	sub maiTri-thai nikhahit-thai by nikhahit_maiTri-thai;
