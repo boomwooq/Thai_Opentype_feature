@@ -1,18 +1,17 @@
-##Update 2025-01-28
-#Default tone-mark
-##Tonal mark
+#Default tonal marks
+##Tonal marks
 @TH_top_tonal_mark = [maiEk-thai maiTho-thai maiTri-thai maiChattawa-thai thanthakhat-thai maitaikhu-thai];
 @TH_top_tonal_mark_narrow = [maiEk-thai.narrow maiTho-thai.narrow maiTri-thai.narrow maiChattawa-thai.narrow thanthakhat-thai.narrow maitaikhu-thai.narrow];
 @TH_top_tonal_mark_small = [maiEk-thai.small maiTho-thai.small maiTri-thai.small maiChattawa-thai.small thanthakhat-thai.small maitaikhu-thai.small];  
 
-##Vowels mark
+##Vowel marks
 @TH_top_vowel_marks = [maiHanaKat-thai saraI-thai saraIi-thai saraUe-thai saraUee-thai nikhahit-thai];
 @TH_top_vowel_marks_narrow =[maiHanaKat-thai.narrow saraI-thai.narrow saraIi-thai.narrow saraUe-thai.narrow saraUee-thai.narrow nikhahit-thai.narrow];
 
 ###
-###Default_Tonemark_All
+###All Default Tonal marks
 ###
-#TH_top_vowel_n_tonal_mark : with Yamakarn-thai
+#Yamakarn-thai doesn't have .narrow
 @TH_top_vowel_n_tonal_mark = [@TH_top_tonal_mark @TH_top_vowel_marks yamakkan-thai];
 @TH_top_vowel_n_tonal_mark_narrow = [@TH_top_tonal_mark_narrow @TH_top_vowel_marks_narrow yamakkan-thai];
 
@@ -20,9 +19,9 @@
 @TH_narrow_consonants = [poPla-thai foFa-thai foFan-thai];
 
 
-#bottom tonemark
-@TH_bottom_tonemark = [saraU-thai saraUu-thai phinthu-thai];
-@TH_bottom_tonemark_small = [saraU-thai.small saraUu-thai.small phinthu-thai.small];
+#bottom marks
+@TH_bottom_marks = [saraU-thai saraUu-thai phinthu-thai];
+@TH_bottom_marks_small = [saraU-thai.small saraUu-thai.small phinthu-thai.small];
 @TH_saraAi_set = [saraO-thai saraAiMaimuan-thai saraAiMaimalai-thai];
 
 # GSUB Lookup Type 2 – multiple substitution
@@ -52,9 +51,9 @@ lookup ccmp_thai_nikhahit_narrow {
 
 lookup ccmp_thai_contextual_sub {
 	##Sub Dot Less & Short Group
-	sub [yoYing-thai thoThan-thai]' @TH_bottom_tonemark by [yoYing-thai.less thoThan-thai.less];
-	sub [doChada-thai toPatak-thai]' @TH_bottom_tonemark by [doChada-thai.short toPatak-thai.short];
-	sub [doChada-thai.short toPatak-thai.short] @TH_bottom_tonemark' by @TH_bottom_tonemark_small;
+	sub [yoYing-thai thoThan-thai]' @TH_bottom_marks by [yoYing-thai.less thoThan-thai.less];
+	sub [doChada-thai toPatak-thai]' @TH_bottom_marks by [doChada-thai.short toPatak-thai.short];
+	sub [doChada-thai.short toPatak-thai.short] @TH_bottom_marks' by @TH_bottom_marks_small;
 	
 	##Sub tone-mark on the 2nd floor
 	sub @TH_top_vowel_n_tonal_mark @TH_top_tonal_mark' by @TH_top_tonal_mark_small;
@@ -62,8 +61,8 @@ lookup ccmp_thai_contextual_sub {
 	##Sub loChula
 	sub loChula-thai' @TH_top_vowel_n_tonal_mark by loChula-thai.short;
 	sub loChula-thai' @TH_top_vowel_n_tonal_mark @TH_top_tonal_mark_small by loChula-thai.short;
-	sub loChula-thai' @TH_top_vowel_n_tonal_mark @TH_bottom_tonemark by loChula-thai.short;
-	sub loChula-thai' @TH_bottom_tonemark @TH_top_vowel_n_tonal_mark by loChula-thai.short;
+	sub loChula-thai' @TH_top_vowel_n_tonal_mark @TH_bottom_marks by loChula-thai.short;
+	sub loChula-thai' @TH_bottom_marks @TH_top_vowel_n_tonal_mark by loChula-thai.short;
 	sub loChula-thai' [nikhahit_maiEk-thai nikhahit_maiTho-thai nikhahit_maiTri-thai nikhahit_maiChattawa-thai] by loChula-thai.short;
 } ccmp_thai_contextual_sub;
 
