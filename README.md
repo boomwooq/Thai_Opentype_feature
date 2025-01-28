@@ -7,6 +7,7 @@ Adjust Nikhahit order to work in both ways:
 - Nikhahit + top tonal marks
 - Update group order
 - Update group name
+- Update sub group
 
 Loop: 
 **Update 2024-07-22**  
