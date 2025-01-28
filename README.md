@@ -1,12 +1,15 @@
 GlyphsApp Feature: CCMP
 -----
-Update made in 2025-01-22
-Nevermind Canva, they need both (top tone + Nikhahit & Nikhahit + top tone)
-If it's only top tone + Nikhahit, the ligature will not show up. 
+Update made in 2025-01-28
+Adjust Nikhahit order to work in both ways: 
+- top tonal marks + Nikhahit
+- Nikhahit + top tonal marks
+- Update group order
+- Update group name
 
 Loop: 
 **Update 2024-07-22**  
 My current Thai Loop feature file has the additional glyph.left tone-mark to prevent tone-mark crash with `ใ ไ โ`set 
 
 Loopless: 
-**Update 2024-07-22**
+**Update 2025-01-28**
