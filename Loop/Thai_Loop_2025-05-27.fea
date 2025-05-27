@@ -10,7 +10,7 @@
 @TH_tonal_marks_small = [maiEk-thai.small maiTho-thai.small maiTri-thai.small maiChattawa-thai.small thanthakhat-thai.small maitaikhu-thai.small];
 
 @TH_vowel_top = [maiHanaKat-thai saraI-thai saraIi-thai saraUe-thai saraUee-thai nikhahit-thai];
-@TH_vowel_top_narrow = [maiHanaKat-thai.narrow saraI-thai.narrow saraIi-thai.narrow saraUe-thai.narrow saraUee-thai.narrow nikhahit-thai.narrow]
+@TH_vowel_top_narrow = [maiHanaKat-thai.narrow saraI-thai.narrow saraIi-thai.narrow saraUe-thai.narrow saraUee-thai.narrow nikhahit-thai.narrow];
 
 @TH_all_tonemarks = [@TH_tonal_marks @TH_vowel_top];
 @TH_all_tonemarks_narrow = [@TH_tonal_marks_narrow @TH_vowel_top_narrow];
@@ -34,6 +34,10 @@ lookup ccmp_thai_nikhahit_normal {
 	sub maiTho-thai nikhahit-thai by nikhahit_maiTho-thai;
 	sub maiTri-thai nikhahit-thai by nikhahit_maiTri-thai;
 	sub maiChattawa-thai nikhahit-thai by nikhahit_maiChattawa-thai;
+	sub nikhahit-thai maiEk-thai by nikhahit_maiEk-thai; #reverse
+	sub nikhahit-thai maiTho-thai by nikhahit_maiTho-thai; #reverse
+	sub nikhahit-thai maiTri-thai by nikhahit_maiTri-thai; #reverse
+	sub nikhahit-thai maiChattawa-thai by nikhahit_maiChattawa-thai; #reverse
 } ccmp_thai_nikhahit_normal;
 
 lookup ccmp_thai_nikhahit_narrow {
