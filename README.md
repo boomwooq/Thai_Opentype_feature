@@ -14,3 +14,6 @@ Loop:
 My current Thai Loop feature file has the additional glyph.left tone-mark to prevent tone-mark crash with `ใ ไ โ`set 
 
 
+ccmp: 
+**Update 2025-05-06**
+features.fea for Robofont usage. Thai is mainly in `ccmp`.

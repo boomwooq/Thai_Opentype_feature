@@ -1,0 +1,79 @@
+languagesystem DFLT dflt;
+languagesystem latn dflt; 
+languagesystem thai dflt;
+
+########################
+# Thai #Update: 2026-05-06
+########################
+
+#group consonant
+#letter with ascender, excluding th-fofan
+@TH_narrow_con = [th-popla th-fofa];
+
+#group tone-mark
+##top
+@TH_tonal_marks= [th-maiek th-maitho th-maitri th-maichattawa th-thanthakhat th-maitaikhu];
+@TH_tonal_marks_narrow= [th-maiek.narrow th-maitho.narrow th-maitri.narrow th-maichattawa.narrow th-thanthakhat.narrow th-maitaikhu.narrow];
+@TH_tonal_marks_small = [th-maiek.small th-maitho.small th-maitri.small th-maichattawa.small th-thanthakhat.small th-maitaikhu];
+
+@TH_vowel_top = [th-maihan-akat th-sarai th-saraii th-saraue th-sarauee th-nikhahit];
+@TH_vowel_top_narrow = [th-maihan-akat.narrow th-sarai.narrow th-saraii.narrow th-saraue.narrow th-sarauee.narrow th-nikhahit.narrow];
+
+@TH_all_tonemarks = [@TH_tonal_marks @TH_vowel_top];
+@TH_all_tonemarks_narrow = [@TH_tonal_marks_narrow @TH_vowel_top_narrow];
+@TH_all_base1_tonemarks = [@TH_all_tonemarks @TH_all_tonemarks_narrow th-yamakkan];
+
+##bottom 
+@TH_bottom_tonemark = [th-sarau th-sarauu th-phinthu];
+@TH_bottom_tonemark_small = [th-sarau.small th-sarauu.small th-phinthu.small];
+
+feature ccmp {
+    script thai;
+	# GSUB Lookup Type 2 – multiple substitution
+	lookup ccmp_1_saraAm {
+		sub th-saraam by th-nikhahit th-saraaa;
+	} ccmp_1_saraAm;
+
+	lookup ccmp_4_thai_ligature_nikhahit_maihanakat_narrow_set {
+		# th-nikhahit
+		sub @TH_narrow_con th-nikhahit' by th-nikhahit.narrow;
+	} ccmp_4_thai_ligature_nikhahit_maihanakat_narrow_set;
+
+	lookup ccmp_5_thai_contextual_sub { 
+		##Dot Less & Short Group
+		sub [th-yoying th-thothan]' @TH_bottom_tonemark by [th-yoying.less th-thothan.less];
+		sub [th-dochada th-topatak]' @TH_bottom_tonemark by [th-dochada.short th-topatak.short];
+		sub [th-dochada.short th-topatak.short] @TH_bottom_tonemark' by @TH_bottom_tonemark_small;
+		#Sub Tone-mark
+		sub @TH_all_base1_tonemarks @TH_tonal_marks' by @TH_tonal_marks_small;
+		##loChula
+		sub th-lochula' @TH_all_base1_tonemarks by th-lochula.short;
+		sub th-lochula' @TH_all_base1_tonemarks @TH_bottom_tonemark by th-lochula.short;
+		sub th-lochula' @TH_bottom_tonemark @TH_all_base1_tonemarks by th-lochula.short;
+	} ccmp_5_thai_contextual_sub;
+
+	lookup ccmp_6_thai_narrow_con{ 
+		lookupflag UseMarkFilteringSet @TH_all_tonemarks;
+		sub @TH_narrow_con @TH_all_tonemarks' by @TH_all_tonemarks_narrow;
+	} ccmp_6_thai_narrow_con;
+
+	lookup ccmp_7_thai_foFan{
+		lookupflag UseMarkFilteringSet @TH_all_tonemarks;
+		##2026-04-24_foFan-thai with .narrow tonal mark (Below)
+		sub th-fofan [@TH_tonal_marks th-maihan-akat th-thanthakhat th-maitaikhu th-nikhahit]' by [@TH_tonal_marks_narrow th-maihan-akat.narrow th-thanthakhat.narrow th-maitaikhu.narrow th-nikhahit.narrow];
+	} ccmp_7_thai_foFan;
+
+} ccmp;
+
+feature mark {
+	include (mark.fea);
+} mark;
+
+feature mkmk {
+	include (mkmk.fea);
+} mkmk;
+
+# feature kern {
+#     lookupflag IgnoreMarks;
+# 	include (kern.fea);
+# } kern;
