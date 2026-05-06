@@ -15,5 +15,5 @@ My current Thai Loop feature file has the additional glyph.left tone-mark to pre
 
 
 ccmp: 
-**Update 2025-05-06**
-features.fea for Robofont usage. Thai is mainly in `ccmp`.
+**Updated 2025-05-06**
+`features.fea` for RoboFont. Thai is mostly in `ccmp` — handling the basic substitution necessities.
