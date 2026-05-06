@@ -2,16 +2,16 @@ languagesystem DFLT dflt;
 languagesystem latn dflt; 
 languagesystem thai dflt;
 
-########################
+##########################
 # Thai #Update: 2026-05-06
-########################
+##########################
 
-#group consonant
-#letter with ascender, excluding th-fofan
+# Group consonant
+# Letter with ascender, but excluding th-fofan
 @TH_narrow_con = [th-popla th-fofa];
 
-#group tone-mark
-##top
+# Group tone-mark
+# Top tonemark
 @TH_tonal_marks= [th-maiek th-maitho th-maitri th-maichattawa th-thanthakhat th-maitaikhu];
 @TH_tonal_marks_narrow= [th-maiek.narrow th-maitho.narrow th-maitri.narrow th-maichattawa.narrow th-thanthakhat.narrow th-maitaikhu.narrow];
 @TH_tonal_marks_small = [th-maiek.small th-maitho.small th-maitri.small th-maichattawa.small th-thanthakhat.small th-maitaikhu];
@@ -23,7 +23,7 @@ languagesystem thai dflt;
 @TH_all_tonemarks_narrow = [@TH_tonal_marks_narrow @TH_vowel_top_narrow];
 @TH_all_base1_tonemarks = [@TH_all_tonemarks @TH_all_tonemarks_narrow th-yamakkan];
 
-##bottom 
+# Bottom tonemark
 @TH_bottom_tonemark = [th-sarau th-sarauu th-phinthu];
 @TH_bottom_tonemark_small = [th-sarau.small th-sarauu.small th-phinthu.small];
 
@@ -34,34 +34,39 @@ feature ccmp {
 		sub th-saraam by th-nikhahit th-saraaa;
 	} ccmp_1_saraAm;
 
-	lookup ccmp_4_thai_ligature_nikhahit_maihanakat_narrow_set {
-		# th-nikhahit
+	lookup ccmp_2_thai_ligature_nikhahit_maihanakat_narrow_set {
+		# This is for th-nikhahit set and other ligature top tonemark
+		# If there is a ligature tone-mark such as th-nikhahit + th-maitho, it will be added here for .narrow.
+		# And for default set + ligature tone-mark, another lookup should be added above this one.
 		sub @TH_narrow_con th-nikhahit' by th-nikhahit.narrow;
-	} ccmp_4_thai_ligature_nikhahit_maihanakat_narrow_set;
+	} ccmp_2_thai_ligature_nikhahit_maihanakat_narrow_set;
 
-	lookup ccmp_5_thai_contextual_sub { 
-		##Dot Less & Short Group
+	lookup ccmp_3_thai_contextual_sub { 
 		sub [th-yoying th-thothan]' @TH_bottom_tonemark by [th-yoying.less th-thothan.less];
 		sub [th-dochada th-topatak]' @TH_bottom_tonemark by [th-dochada.short th-topatak.short];
 		sub [th-dochada.short th-topatak.short] @TH_bottom_tonemark' by @TH_bottom_tonemark_small;
-		#Sub Tone-mark
+
+		# Sub Tone-mark set to .small (second level tonemark)
 		sub @TH_all_base1_tonemarks @TH_tonal_marks' by @TH_tonal_marks_small;
-		##loChula
+		
+		# All senario of th-lochula
 		sub th-lochula' @TH_all_base1_tonemarks by th-lochula.short;
 		sub th-lochula' @TH_all_base1_tonemarks @TH_bottom_tonemark by th-lochula.short;
 		sub th-lochula' @TH_bottom_tonemark @TH_all_base1_tonemarks by th-lochula.short;
-	} ccmp_5_thai_contextual_sub;
+	} ccmp_3_thai_contextual_sub;
 
-	lookup ccmp_6_thai_narrow_con{ 
+	lookup ccmp_4_thai_narrow_con{ 
 		lookupflag UseMarkFilteringSet @TH_all_tonemarks;
 		sub @TH_narrow_con @TH_all_tonemarks' by @TH_all_tonemarks_narrow;
-	} ccmp_6_thai_narrow_con;
+	} ccmp_4_thai_narrow_con;
 
-	lookup ccmp_7_thai_foFan{
+	lookup ccmp_5_thai_foFan{
 		lookupflag UseMarkFilteringSet @TH_all_tonemarks;
-		##2026-04-24_foFan-thai with .narrow tonal mark (Below)
+		# In Loopless style, foFan-thai will be use only with .narrow 'tonal' mark
+		# In Loop style, this lookup can be deleted, and add don't forget to add 'th-fofan' in @TH_narrow_con
+		# Adjust as needed per typeface
 		sub th-fofan [@TH_tonal_marks th-maihan-akat th-thanthakhat th-maitaikhu th-nikhahit]' by [@TH_tonal_marks_narrow th-maihan-akat.narrow th-thanthakhat.narrow th-maitaikhu.narrow th-nikhahit.narrow];
-	} ccmp_7_thai_foFan;
+	} ccmp_5_thai_foFan;
 
 } ccmp;
 
